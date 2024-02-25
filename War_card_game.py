@@ -10,13 +10,10 @@ class deckscontents:
         self.card2 = card2
         self.deck1 = deck1
         self.deck2 = deck2
-        self.stats_list = []
-        self.stats_file = 'stats.csv'
 
     def deck_player1(self):
         count1 = len(self.deck1)
         count2 = len(self.deck2)
-
         with open('memory_deck1.txt', 'w') as file:
             file.write(f'{count1}')
         with open('memory_deck1.txt', 'r') as file:
@@ -30,7 +27,6 @@ class deckscontents:
     def deck_player2(self):
         count2 = len(self.deck2)
         count1 = len(self.deck1)
-
         with open('memory_deck2.txt', 'w') as file:
             file.write(f'{count2}')
         with open('memory_deck2.txt', 'r') as file:
@@ -44,16 +40,15 @@ class deckscontents:
     def tie(self):
         count1 = len(self.deck1)
         count2 = len(self.deck2)
-
         with open('memory_deck1.txt', 'w') as file:
             file.write(f'{count1}')
         with open('memory_deck2.txt', 'w') as file:
             file.write(f'{count2}')
-
         with open('memory_deck1.txt', 'r') as file:
             content1 = file.read()
         with open('memory_deck2.txt', 'r') as file:
             content2 = file.read()
+
         print(f'deck1: {content1}, deck2: {content2} TIE')
         content1int = int(content1)
         content2int = int(content2)
@@ -128,7 +123,6 @@ def fight(card1,card2, deck1, deck2, fight_list, deck_content: deckscontents):
             fight_list = []
             deck1.append(card2)
             deck2.remove(card2)
-            deck_content.stats()
             deck_content.deck_player1()
             fight(card1,card2, deck1, deck2, fight_list, deck_content)
             #deck()
@@ -138,7 +132,6 @@ def fight(card1,card2, deck1, deck2, fight_list, deck_content: deckscontents):
             fight_list = []
             deck1.remove(card1)
             deck2.append(card1)
-            deck_content.stats()
             deck_content.deck_player2()
             fight(card1,card2, deck1, deck2, fight_list, deck_content)
             #deck()
@@ -149,7 +142,6 @@ def fight(card1,card2, deck1, deck2, fight_list, deck_content: deckscontents):
             fight_list.append(card1)
             fight_list.append(card2)
             #print(fight_list)
-            deck_content.stats()
             deck_content.tie()
             fight(card1,card2, deck1, deck2, fight_list, deck_content)
 

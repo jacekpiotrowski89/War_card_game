@@ -59,6 +59,7 @@ class deckscontents:
         elif content2int == 0:
             print('Player 1 WIN.')
             menu()
+            
     #save all cycles in the game in .csv file.
     def stats(self):
         count1, count2 = count(self.deck1, self.deck2)
@@ -176,7 +177,6 @@ def p1p2tie(deck1,deck2, card1, card2, fight_list, deck_content: deckscontents):
     deck_content.stats()
     deck_content.tie()
     fight(card1,card2, deck1, deck2, fight_list, deck_content)
-
 
 if __name__ == '__main__':
      intro()
